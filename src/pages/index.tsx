@@ -1,14 +1,17 @@
 import Head from "next/head";
 import {
   AnonAadhaarProof,
-  LogInWithAnonAadhaar,
+  LogInWithAnonAadhaarV2,
+  LogInWithAnonAadhaar, 
   useAnonAadhaar,
 } from "anon-aadhaar-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Toggle from "./components/Toggle"
 
 export default function Home() {
   // Use the Country Identity hook to get the status of the user.
   const [anonAadhaar] = useAnonAadhaar();
+  const [enabled, setEnabled] = useState<boolean>(false)
 
   useEffect(() => {
     console.log("Anon Aadhaar status: ", anonAadhaar.status);
@@ -33,7 +36,8 @@ export default function Home() {
           <p>Prove your Identity anonymously using your Aadhaar card.</p>
 
           {/* Import the Connect Button component */}
-          <LogInWithAnonAadhaar />
+          {enabled ? <LogInWithAnonAadhaarV2 /> : <LogInWithAnonAadhaar />}
+          <Toggle enabled={enabled} setEnabled={setEnabled} />
         </main>
         <div className="flex flex-col items-center gap-4 rounded-2xl max-w-screen-sm mx-auto p-8">
           {/* Render the proof if generated and valid */}
