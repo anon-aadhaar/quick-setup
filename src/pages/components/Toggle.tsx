@@ -30,7 +30,7 @@ export default function Toggle({enabled, setEnabled}: ToggleProps) {
         )}
       />
     </Switch>
-    <p>{enabled ? "With certificate" : "Without certificate"}</p>
+    <p>{enabled ? "Without certificate" : "With certificate"}</p>
     </>
   )
 }
