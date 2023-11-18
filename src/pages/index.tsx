@@ -1,7 +1,7 @@
 import Head from "next/head";
 import {
   AnonAadhaarProof,
-  LogInWithAnonAadhaar,
+  LogInWithAnonAadhaarV2,
   useAnonAadhaar,
 } from "anon-aadhaar-react";
 import { useEffect } from "react";
@@ -33,7 +33,7 @@ export default function Home() {
           <p>Prove your Identity anonymously using your Aadhaar card.</p>
 
           {/* Import the Connect Button component */}
-          <LogInWithAnonAadhaar />
+          <LogInWithAnonAadhaarV2 />
         </main>
         <div className="flex flex-col items-center gap-4 rounded-2xl max-w-screen-sm mx-auto p-8">
           {/* Render the proof if generated and valid */}
