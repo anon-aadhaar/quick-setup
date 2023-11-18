@@ -414,6 +414,13 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
+"@types/node-forge@^1.3.9":
+  version "1.3.9"
+  resolved "https://registry.yarnpkg.com/@types/node-forge/-/node-forge-1.3.9.tgz#0fe4a7ba69c0b173f56e6de65d0eae2c1dd4bbfe"
+  integrity sha512-meK88cx/sTalPSLSoCzkiUB4VPIFHmxtXm5FaaqRDqBX2i/Sy8bJ4odsan0b20RBjPh06dAQ+OTTdnyQyhJZyQ==
+  dependencies:
+    "@types/node" "*"
+
 "@types/node@*":
   version "20.8.9"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.8.9.tgz#646390b4fab269abce59c308fc286dcd818a2b08"
