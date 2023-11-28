@@ -13,7 +13,7 @@
     "@types/node": "20.6.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "anon-aadhaar-react": "^0.1.8",
+    "anon-aadhaar-react": "^0.1.9",
     "autoprefixer": "10.4.15",
     "axios": "^1.6.2",
     "eslint": "8.49.0",
