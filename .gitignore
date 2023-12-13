@@ -33,3 +33,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+public/main.wasm
+public/circuit_final.zkey
+public/verification_key.json
