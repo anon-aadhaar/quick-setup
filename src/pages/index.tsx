@@ -6,8 +6,8 @@ import {
 } from "anon-aadhaar-react";
 import { useEffect } from "react";
 import React, { useState } from "react";
-import { QrReader } from "react-qr-reader";
 import { isMobile } from "react-device-detect";
+import { QrScanner } from "@yudiel/react-qr-scanner";
 
 export default function Home() {
   // Use the Country Identity hook to get the status of the user.
@@ -42,11 +42,12 @@ export default function Home() {
         <LogInWithAnonAadhaar />
         <p>{result}</p>
       </main>
-      <QrReader
-        onResult={handleScan}
+      <QrScanner
         constraints={{
           facingMode: isMobile ? "environment" : "user",
         }}
+        onDecode={(result) => setResult(result)}
+        onError={(error) => console.log(error?.message)}
       />
       <div className="flex flex-col items-center gap-4 rounded-2xl max-w-screen-sm mx-auto p-8">
         {/* Render the proof if generated and valid */}

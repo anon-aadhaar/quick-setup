@@ -13,6 +13,7 @@
     "@types/node": "20.6.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
+    "@yudiel/react-qr-scanner": "^1.2.4",
     "anon-aadhaar-react": "^0.1.15",
     "autoprefixer": "10.4.15",
     "axios": "^1.6.2",
@@ -23,7 +24,6 @@
     "react": "^18.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
-    "react-qr-reader": "^3.0.0-beta-1",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   },
