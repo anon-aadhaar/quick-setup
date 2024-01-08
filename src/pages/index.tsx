@@ -6,31 +6,13 @@ import {
 } from "anon-aadhaar-react";
 import { useEffect } from "react";
 import React, { useState } from "react";
-import { isMobile } from "react-device-detect";
-import { QrScanner } from "@yudiel/react-qr-scanner";
 
 export default function Home() {
-  // Use the Country Identity hook to get the status of the user.
   const [anonAadhaar] = useAnonAadhaar();
-  const [result, setResult] = useState("none");
 
   useEffect(() => {
     console.log("Anon Aadhaar: ", anonAadhaar.status);
   }, [anonAadhaar]);
-
-  const handleScan = (result: any, error: any) => {
-    if (result) {
-      setResult(result?.text);
-    }
-
-    if (!!error) {
-      console.info(error);
-    }
-  };
-
-  const handleError = (err: any) => {
-    console.error(err);
-  };
 
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-8">
@@ -40,15 +22,8 @@ export default function Home() {
 
         {/* Import the Connect Button component */}
         <LogInWithAnonAadhaar />
-        <p>{result}</p>
       </main>
-      <QrScanner
-        constraints={{
-          facingMode: isMobile ? "environment" : "user",
-        }}
-        onDecode={(result) => setResult(result)}
-        onError={(error) => console.log(error?.message)}
-      />
+
       <div className="flex flex-col items-center gap-4 rounded-2xl max-w-screen-sm mx-auto p-8">
         {/* Render the proof if generated and valid */}
         {anonAadhaar?.status === "logged-in" && (
