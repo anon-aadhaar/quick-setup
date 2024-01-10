@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       {ready ? (
-        <AnonAadhaarProvider _appId={app_id} _isWeb={true} _testing={false}>
+        <AnonAadhaarProvider _appId={app_id} _isWeb={false} _testing={true}>
           <Component {...pageProps} />
         </AnonAadhaarProvider>
       ) : null}
