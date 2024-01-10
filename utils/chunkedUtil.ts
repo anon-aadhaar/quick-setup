@@ -144,9 +144,6 @@ export const genProof = async (
     modulus: args.modulus.value,
   };
 
-  console.log("Downloads done");
-  console.log("Inputs: ", input.message_len);
-
   const { proof, publicSignals } = await generateProof(input, "circuit_final");
 
   console.log("Proof: ", proof);

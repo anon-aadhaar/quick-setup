@@ -6,6 +6,6 @@ addEventListener("message", async (event: MessageEvent<number>) => {
     await genProof(event.data);
     postMessage("Proof generated");
   } catch (e) {
-    postMessage("Error while generating the proof");
+    postMessage(e);
   }
 });
