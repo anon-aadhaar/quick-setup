@@ -1,12 +1,11 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
-import { AnonAadhaarProvider } from "anon-aadhaar-react";
-
-const app_id = process.env.NEXT_PUBLIC_APP_ID || "";
+import { AnonAadhaarProvider } from "@anon-aadhaar/react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [ready, setReady] = useState<boolean>(false);
+  const [useTestAadhaar, setUseTestAadhaar] = useState<boolean>(false);
 
   useEffect(() => {
     setReady(true);
@@ -15,8 +14,12 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       {ready ? (
-        <AnonAadhaarProvider _appId={app_id}>
-          <Component {...pageProps} />
+        <AnonAadhaarProvider _useTestAadhaar={useTestAadhaar}>
+          <Component
+            {...pageProps}
+            setUseTestAadhaar={setUseTestAadhaar}
+            useTestAadhaar={useTestAadhaar}
+          />
         </AnonAadhaarProvider>
       ) : null}
     </>

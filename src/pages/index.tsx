@@ -1,18 +1,26 @@
-import Head from "next/head";
 import {
   AnonAadhaarProof,
   LogInWithAnonAadhaar,
   useAnonAadhaar,
-} from "anon-aadhaar-react";
+} from "@anon-aadhaar/react";
 import { useEffect } from "react";
 
-export default function Home() {
+type HomeProps = {
+  setUseTestAadhaar: (state: boolean) => void;
+  useTestAadhaar: boolean;
+};
+
+export default function Home({ setUseTestAadhaar, useTestAadhaar }: HomeProps) {
   // Use the Country Identity hook to get the status of the user.
   const [anonAadhaar] = useAnonAadhaar();
 
   useEffect(() => {
     console.log("Anon Aadhaar: ", anonAadhaar.status);
   }, [anonAadhaar]);
+
+  const switchAadhaar = () => {
+    setUseTestAadhaar(!useTestAadhaar);
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-8">
@@ -22,6 +30,15 @@ export default function Home() {
 
         {/* Import the Connect Button component */}
         <LogInWithAnonAadhaar />
+
+        <button
+          onClick={switchAadhaar}
+          type="button"
+          className="rounded bg-white px-2 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        >
+          Switch for {useTestAadhaar ? "real" : "test"}
+        </button>
+        {useTestAadhaar ? "Using test Aadhaar" : "Using real Aadhaar"}
       </main>
       <div className="flex flex-col items-center gap-4 rounded-2xl max-w-screen-sm mx-auto p-8">
         {/* Render the proof if generated and valid */}
@@ -30,7 +47,9 @@ export default function Home() {
             <p>✅ Proof is valid</p>
             <p>Got your Aadhaar Identity Proof</p>
             <>Welcome anon!</>
-            <AnonAadhaarProof code={JSON.stringify(anonAadhaar.pcd, null, 2)} />
+            <AnonAadhaarProof
+              code={JSON.stringify(anonAadhaar.anonAadhaarProof, null, 2)}
+            />
           </>
         )}
       </div>
