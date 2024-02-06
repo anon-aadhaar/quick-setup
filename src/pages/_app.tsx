@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AnonAadhaarProvider } from "@anon-aadhaar/react";
 
 export default function App({ Component, pageProps }: AppProps) {
