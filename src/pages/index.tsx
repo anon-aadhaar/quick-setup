@@ -31,6 +31,15 @@ export default function Home({ setUseTestAadhaar, useTestAadhaar }: HomeProps) {
         {/* Import the Connect Button component */}
         <LogInWithAnonAadhaar />
 
+        {useTestAadhaar ? (
+          <p>
+            You&apos;re using the <strong> test </strong> Aadhaar mode
+          </p>
+        ) : (
+          <p>
+            You&apos;re using the <strong> real </strong> Aadhaar mode
+          </p>
+        )}
         <button
           onClick={switchAadhaar}
           type="button"
@@ -38,7 +47,6 @@ export default function Home({ setUseTestAadhaar, useTestAadhaar }: HomeProps) {
         >
           Switch for {useTestAadhaar ? "real" : "test"}
         </button>
-        {useTestAadhaar ? "Using test Aadhaar" : "Using real Aadhaar"}
       </main>
       <div className="flex flex-col items-center gap-4 rounded-2xl max-w-screen-sm mx-auto p-8">
         {/* Render the proof if generated and valid */}
