@@ -14,7 +14,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       {ready ? (
-        <AnonAadhaarProvider _useTestAadhaar={useTestAadhaar}>
+        <AnonAadhaarProvider
+          _useTestAadhaar={useTestAadhaar}
+          _appName="Anon Aadhaar"
+        >
           <Component
             {...pageProps}
             setUseTestAadhaar={setUseTestAadhaar}
