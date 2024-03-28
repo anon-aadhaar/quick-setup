@@ -2,6 +2,7 @@ import {
   AnonAadhaarProof,
   LogInWithAnonAadhaar,
   useAnonAadhaar,
+  useProver,
 } from "@anon-aadhaar/react";
 import { useEffect } from "react";
 
@@ -13,9 +14,12 @@ type HomeProps = {
 export default function Home({ setUseTestAadhaar, useTestAadhaar }: HomeProps) {
   // Use the Country Identity hook to get the status of the user.
   const [anonAadhaar] = useAnonAadhaar();
+  const [, latestProof] = useProver();
 
   useEffect(() => {
-    console.log("Anon Aadhaar: ", anonAadhaar.status);
+    if (anonAadhaar.status === "logged-in") {
+      console.log(anonAadhaar.status);
+    }
   }, [anonAadhaar]);
 
   const switchAadhaar = () => {
@@ -29,7 +33,7 @@ export default function Home({ setUseTestAadhaar, useTestAadhaar }: HomeProps) {
         <p>Prove your Identity anonymously using your Aadhaar card.</p>
 
         {/* Import the Connect Button component */}
-        <LogInWithAnonAadhaar />
+        <LogInWithAnonAadhaar nullifierSeed={1234} />
 
         {useTestAadhaar ? (
           <p>
@@ -50,14 +54,16 @@ export default function Home({ setUseTestAadhaar, useTestAadhaar }: HomeProps) {
       </main>
       <div className="flex flex-col items-center gap-4 rounded-2xl max-w-screen-sm mx-auto p-8">
         {/* Render the proof if generated and valid */}
-        {anonAadhaar?.status === "logged-in" && (
+        {anonAadhaar.status === "logged-in" && (
           <>
             <p>✅ Proof is valid</p>
             <p>Got your Aadhaar Identity Proof</p>
             <>Welcome anon!</>
-            <AnonAadhaarProof
-              code={JSON.stringify(anonAadhaar.anonAadhaarProof, null, 2)}
-            />
+            {latestProof && (
+              <AnonAadhaarProof
+                code={JSON.stringify(JSON.parse(latestProof), null, 2)}
+              />
+            )}
           </>
         )}
       </div>
