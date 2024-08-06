@@ -60,9 +60,7 @@ export default function Home({ setUseTestAadhaar, useTestAadhaar }: HomeProps) {
             <p>Got your Aadhaar Identity Proof</p>
             <>Welcome anon!</>
             {latestProof && (
-              <AnonAadhaarProof
-                code={JSON.stringify(JSON.parse(latestProof), null, 2)}
-              />
+              <AnonAadhaarProof code={JSON.stringify(latestProof, null, 2)} />
             )}
           </>
         )}
